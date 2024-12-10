@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+#d1{
+    border: 2px solid;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+
+}
+#d2{
+    border: 2px solid;
+    height: 50px;
+    width: 350px;
+    /* margin-left:-5%; */
+    margin-top: 1%;
+}
+#d2 ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2.5%;
+    font-size: 17px;
+    color: white;
+}
+#d3{
+    border: 2px solid;
+    height: 50;
+    width: 350px;
+    margin-left:5%;
+}
+#d3 ol{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding-top: 6%;
+    font-size: 17px;
+    color: white;
+}
+#d4{
+   height: 40px;
+   width: 90px; 
+   margin-top: -14%;
+   border: none;
+   color: blue;
+   box-shadow: -0.5px -3px blue;
+   background-color: black;
+}
+#d2 li:hover{
+    cursor: pointer;
+}
+#d3 li:hover{
+    cursor: pointer;
+}
+#demo1{
+    border: 1px solid aqua;
+    height: 100vh;
+    background-color: aqua;
+}
+#demo2{
+    /* border: 2px solid; */
+    height: 115px;
+    width: 100%;
+    padding-top: 4%;
+}
+.demo3{
+    /* border: 2px solid; */
+    height: 100px;
+    width: 780px;
+    border-radius: 25px;
+    box-shadow: -3px -3px rgb(245, 234, 219);
+    background-color: whitesmoke;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    padding-right: 6%;
+    padding-top: 1%;
+    margin-top: 1%;
+}
+.demo3 h2{
+    color: red;
+}
+.demo3 p{
+    padding-right: 1%;
+    padding-top: 2%;
+}
+.demo3 h2:hover{
+    cursor: pointer;
+}
+.demo3 p:hover{
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+    </style>
+    
+    <div id="d1">
+        <div id="d2">
+            <ul>
+                <li>My Blogs</li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+             
+            </ul>
+        </div>
+        <div id="d3">
+           <ol>
+            <li>Search</li>
+            <li><button id="d4">Sign in</button></li>
+           </ol>
+        </div>
+    </div>
+ <div id="demo1">
+    <center>
+        <div id="demo2">
+            <h1>Today's Articles</h1>
+        </div>
+    </center>
+   <center>
+    {% for i in data %}
+    <div class="demo3">
+       <a href="{% url 'details' i.id %}"> <h2>{{i.name}}</h2></a>
+        <p>{{i.descriptions |truncatewords:10}}</p>
+
+    </div>
+    {% endfor %}
+</div>    
+   </center>
+</body>
+</html>
